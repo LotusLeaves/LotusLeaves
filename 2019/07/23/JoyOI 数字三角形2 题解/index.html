@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="题目链接 设f[i][j]为消灭 i，j 时间内外星人的最少花费。设这段区间最晚出现的外星人编号为id，则转移方程为： f[i][j]=min(f[i][j],f[i][k-1]+a[id].d+f[k+1][j])">
-<meta name="keywords" content="题解,区间dp,离散化">
+  <meta name="description" content="题目链接 题目要求结果mod 100最大，一般的dp肯定不行。可以设bool f[i][j][k]为走到(i,j)这个点mod 100能不能得到k 可以用自己更新别人。">
+<meta name="keywords" content="题解,dp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="洛谷 P4766 题解">
-<meta property="og:url" content="https:LotusLeaves.github.io/2019/07/23/洛谷 P4766 题解/index.html">
+<meta property="og:title" content="JoyOI 数字三角形2 题解">
+<meta property="og:url" content="https:LotusLeaves.github.io/2019/07/23/JoyOI 数字三角形2 题解/index.html">
 <meta property="og:site_name" content="lxy&#39;s blog">
-<meta property="og:description" content="题目链接 设f[i][j]为消灭 i，j 时间内外星人的最少花费。设这段区间最晚出现的外星人编号为id，则转移方程为： f[i][j]=min(f[i][j],f[i][k-1]+a[id].d+f[k+1][j])">
+<meta property="og:description" content="题目链接 题目要求结果mod 100最大，一般的dp肯定不行。可以设bool f[i][j][k]为走到(i,j)这个点mod 100能不能得到k 可以用自己更新别人。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-23T01:14:05.529Z">
+<meta property="og:updated_time" content="2019-07-23T05:12:26.833Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="洛谷 P4766 题解">
-<meta name="twitter:description" content="题目链接 设f[i][j]为消灭 i，j 时间内外星人的最少花费。设这段区间最晚出现的外星人编号为id，则转移方程为： f[i][j]=min(f[i][j],f[i][k-1]+a[id].d+f[k+1][j])">
+<meta name="twitter:title" content="JoyOI 数字三角形2 题解">
+<meta name="twitter:description" content="题目链接 题目要求结果mod 100最大，一般的dp肯定不行。可以设bool f[i][j][k]为走到(i,j)这个点mod 100能不能得到k 可以用自己更新别人。">
 
 
 
 
 
 
-  <link rel="canonical" href="https:LotusLeaves.github.io/2019/07/23/洛谷 P4766 题解/">
+  <link rel="canonical" href="https:LotusLeaves.github.io/2019/07/23/JoyOI 数字三角形2 题解/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>洛谷 P4766 题解 | lxy's blog</title>
+  <title>JoyOI 数字三角形2 题解 | lxy's blog</title>
   
 
 
@@ -327,7 +327,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https:LotusLeaves.github.io/2019/07/23/洛谷 P4766 题解/">
+    <link itemprop="mainEntityOfPage" href="https:LotusLeaves.github.io/2019/07/23/JoyOI 数字三角形2 题解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lxy">
@@ -344,7 +344,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">洛谷 P4766 题解
+          <h1 class="post-title" itemprop="name headline">JoyOI 数字三角形2 题解
 
               
             
@@ -370,7 +370,7 @@
                 
               
 
-              <time title="创建时间：2019-07-23 09:06:00 / 修改时间：09:14:05" itemprop="dateCreated datePublished" datetime="2019-07-23T09:06:00+08:00">2019-07-23</time>
+              <time title="创建时间：2019-07-23 13:08:43 / 修改时间：13:12:26" itemprop="dateCreated datePublished" datetime="2019-07-23T13:08:43+08:00">2019-07-23</time>
             
 
             
@@ -389,8 +389,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/07/23/洛谷 P4766 题解/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/07/23/洛谷 P4766 题解/" itemprop="commentCount"></span>
+                <a href="/2019/07/23/JoyOI 数字三角形2 题解/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/07/23/JoyOI 数字三角形2 题解/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -418,14 +418,13 @@
       
 
       
-        <p><a href="https://www.luogu.org/problemnew/show/P4766" target="_blank" rel="noopener">题目链接</a></p>
-<p>设<code>f[i][j]</code>为消灭 <code>i</code>，<code>j</code> 时间内外星人的最少花费。设这段区间最晚出现的外星人编号为<code>id</code>，则转移方程为：</p>
-<p><code>f[i][j]=min(f[i][j],f[i][k-1]+a[id].d+f[k+1][j])</code></p>
+        <p><a href="http://www.joyoi.cn/problem/tyvj-1076" target="_blank" rel="noopener">题目链接</a></p>
+<p>题目要求结果<code>mod 100</code>最大，一般的<code>dp</code>肯定不行。可以设<code>bool f[i][j][k]</code>为走到<code>(i,j)</code>这个点<code>mod 100</code>能不能得到<code>k</code></p>
+<p>可以用自己更新别人。</p>
 <a id="more"></a>
 
-<p>如果开二维数组，<code>10000</code> 有点太大。但是题面只出现了 <code>300</code> 个外星人，所以需要离散化。</p>
-<p>代码如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn=50005;</span><br><span class="line">struct node</span><br><span class="line">&#123;</span><br><span class="line">    int l,r,d;</span><br><span class="line">&#125; a[maxn];</span><br><span class="line">int T,n,m,t[maxn],cnt,f[700][700];</span><br><span class="line">void solve()</span><br><span class="line">&#123;</span><br><span class="line">    cnt=0;</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">    for(int i=1;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        scanf(&quot;%d%d%d&quot;,&amp;a[i].l,&amp;a[i].r,&amp;a[i].d);</span><br><span class="line">        t[++cnt]=a[i].l;</span><br><span class="line">        t[++cnt]=a[i].r;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(t+1,t+cnt+1);</span><br><span class="line">    m=unique(t+1,t+cnt+1)-t-1;</span><br><span class="line">    for(int i=1;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        a[i].l=lower_bound(t+1,t+m+1,a[i].l)-t;</span><br><span class="line">        a[i].r=lower_bound(t+1,t+m+1,a[i].r)-t;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i=0;i&lt;=m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(int l=1;l+i&lt;=m;l++)</span><br><span class="line">        &#123;</span><br><span class="line">            int r=l+i,id=0;</span><br><span class="line">            for(int j=1;j&lt;=n;j++)</span><br><span class="line">                if(a[j].l&gt;=l&amp;&amp;a[j].r&lt;=r&amp;&amp;(!id||a[j].d&gt;a[id].d))</span><br><span class="line">                    id=j;</span><br><span class="line">            if(!id) &#123; f[l][r]=0; continue; &#125;</span><br><span class="line">            f[l][r]=0x3f3f3f3f;</span><br><span class="line">            for(int k=a[id].l;k&lt;=a[id].r;k++)</span><br><span class="line">                f[l][r]=min(f[l][r],f[l][k-1]+f[k+1][r]+a[id].d);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%d\n&quot;,f[1][m]);</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;T);</span><br><span class="line">    while(T--) solve();</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int n,f[100][100][150],a[50][50];</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line"> memset(f,0,sizeof(f));</span><br><span class="line"> scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line"> for(int i=1;i&lt;=n;i++)</span><br><span class="line">	for(int j=1;j&lt;=i;j++)</span><br><span class="line">	 scanf(&quot;%d&quot;,&amp;a[i][j]);</span><br><span class="line"> f[1][1][a[1][1]%100]=1;</span><br><span class="line"> for(int i=1;i&lt;=n;i++)</span><br><span class="line"> &#123;</span><br><span class="line">	 for(int j=1;j&lt;=i;j++)</span><br><span class="line">	 &#123;</span><br><span class="line">		 for(int k=0;k&lt;100;k++)</span><br><span class="line">		 &#123;</span><br><span class="line">			 if(f[i][j][k])</span><br><span class="line">			 &#123;</span><br><span class="line">				 f[i+1][j][(k+a[i+1][j])%100]=1;</span><br><span class="line">				 f[i+1][j+1][(k+a[i+1][j+1])%100]=1;</span><br><span class="line">			 &#125;</span><br><span class="line">		 &#125;</span><br><span class="line">	 &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> int ans=-0x3f3f3f3f;</span><br><span class="line"> for(int i=1;i&lt;=n;i++)</span><br><span class="line"> &#123;</span><br><span class="line">	 for(int k=0;k&lt;100;k++)</span><br><span class="line">	 &#123;</span><br><span class="line">		 if(f[n][i][k])</span><br><span class="line">			ans=max(ans,k);</span><br><span class="line">	 &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> printf(&quot;%d&quot;,ans);</span><br><span class="line"> return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
       
@@ -452,9 +451,7 @@
           
             <a href="/tags/题解/" rel="tag"># 题解</a>
           
-            <a href="/tags/区间dp/" rel="tag"># 区间dp</a>
-          
-            <a href="/tags/离散化/" rel="tag"># 离散化</a>
+            <a href="/tags/dp/" rel="tag"># dp</a>
           
         </div>
       
@@ -467,8 +464,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/23/离散化/" rel="next" title="离散化">
-                <i class="fa fa-chevron-left"></i> 离散化
+              <a href="/2019/07/23/洛谷 P4302 [SCOI2003]字符串折叠 题解/" rel="next" title="洛谷 P4302 [SCOI2003]字符串折叠 题解">
+                <i class="fa fa-chevron-left"></i> 洛谷 P4302 [SCOI2003]字符串折叠 题解
               </a>
             
           </div>
@@ -540,7 +537,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -565,7 +562,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
