@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="题目链接 设f[i][j]为当前处理到第i个字符，上个M放在了第j个字符之后的最小长度。更新的时候使用刷表法。 有三种情况：">
-<meta name="keywords" content="题解,dp">
+  <meta name="description" content="题目链接 首先想到的是最大流=最小割，可以跑一边网络流。但是TLE了。还有一个定理：平面图的最大流=其对偶图的最短路。 建对偶图，然后跑dijkstra+堆优化即可。">
+<meta name="keywords" content="题解,对偶图,平面图,网络流">
 <meta property="og:type" content="article">
-<meta property="og:title" content="洛谷 P2470 [SCOI2007]压缩 题解">
-<meta property="og:url" content="https:LotusLeaves.github.io/2019/07/23/洛谷 P2470 [SCOI2007]压缩 题解/index.html">
+<meta property="og:title" content="bzoj 1001 [BeiJing2006]狼抓兔子 题解">
+<meta property="og:url" content="https:LotusLeaves.github.io/2019/07/26/bzoj 1001 [BeiJing2006]狼抓兔子 题解/index.html">
 <meta property="og:site_name" content="lxy&#39;s blog">
-<meta property="og:description" content="题目链接 设f[i][j]为当前处理到第i个字符，上个M放在了第j个字符之后的最小长度。更新的时候使用刷表法。 有三种情况：">
+<meta property="og:description" content="题目链接 首先想到的是最大流=最小割，可以跑一边网络流。但是TLE了。还有一个定理：平面图的最大流=其对偶图的最短路。 建对偶图，然后跑dijkstra+堆优化即可。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-23T11:49:22.261Z">
+<meta property="og:updated_time" content="2019-07-26T01:47:22.678Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="洛谷 P2470 [SCOI2007]压缩 题解">
-<meta name="twitter:description" content="题目链接 设f[i][j]为当前处理到第i个字符，上个M放在了第j个字符之后的最小长度。更新的时候使用刷表法。 有三种情况：">
+<meta name="twitter:title" content="bzoj 1001 [BeiJing2006]狼抓兔子 题解">
+<meta name="twitter:description" content="题目链接 首先想到的是最大流=最小割，可以跑一边网络流。但是TLE了。还有一个定理：平面图的最大流=其对偶图的最短路。 建对偶图，然后跑dijkstra+堆优化即可。">
 
 
 
 
 
 
-  <link rel="canonical" href="https:LotusLeaves.github.io/2019/07/23/洛谷 P2470 [SCOI2007]压缩 题解/">
+  <link rel="canonical" href="https:LotusLeaves.github.io/2019/07/26/bzoj 1001 [BeiJing2006]狼抓兔子 题解/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>洛谷 P2470 [SCOI2007]压缩 题解 | lxy's blog</title>
+  <title>bzoj 1001 [BeiJing2006]狼抓兔子 题解 | lxy's blog</title>
   
 
 
@@ -327,7 +327,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https:LotusLeaves.github.io/2019/07/23/洛谷 P2470 [SCOI2007]压缩 题解/">
+    <link itemprop="mainEntityOfPage" href="https:LotusLeaves.github.io/2019/07/26/bzoj 1001 [BeiJing2006]狼抓兔子 题解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lxy">
@@ -344,7 +344,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">洛谷 P2470 [SCOI2007]压缩 题解
+          <h1 class="post-title" itemprop="name headline">bzoj 1001 [BeiJing2006]狼抓兔子 题解
 
               
             
@@ -370,7 +370,7 @@
                 
               
 
-              <time title="创建时间：2019-07-23 18:32:59 / 修改时间：19:49:22" itemprop="dateCreated datePublished" datetime="2019-07-23T18:32:59+08:00">2019-07-23</time>
+              <time title="创建时间：2019-07-26 09:40:02 / 修改时间：09:47:22" itemprop="dateCreated datePublished" datetime="2019-07-26T09:40:02+08:00">2019-07-26</time>
             
 
             
@@ -389,8 +389,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/07/23/洛谷 P2470 [SCOI2007]压缩 题解/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/07/23/洛谷 P2470 [SCOI2007]压缩 题解/" itemprop="commentCount"></span>
+                <a href="/2019/07/26/bzoj 1001 [BeiJing2006]狼抓兔子 题解/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/07/26/bzoj 1001 [BeiJing2006]狼抓兔子 题解/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -418,17 +418,13 @@
       
 
       
-        <p><a href="https://www.luogu.org/problemnew/show/P2470" target="_blank" rel="noopener">题目链接</a></p>
-<p>设<code>f[i][j]</code>为当前处理到第<code>i</code>个字符，上个<code>M</code>放在了第<code>j</code>个字符之后的最小长度。更新的时候使用刷表法。</p>
-<p>有三种情况：</p>
+        <p><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1001" target="_blank" rel="noopener">题目链接</a></p>
+<p>首先想到的是最大流=最小割，可以跑一边网络流。但是TLE了。还有一个定理：平面图的最大流=其对偶图的最短路。</p>
+<p>建对偶图，然后跑<code>dijkstra+堆优化</code>即可。</p>
 <a id="more"></a>
 
-<p>1.什么也不做：<code>f[i+1][j]=min(f[i+1][j],f[i][j]+1)</code></p>
-<p>2.在后面放一个<code>M</code>：<code>f[i][i]=min(f[i][i],f[i][j]+1)</code></p>
-<p>3.在后面放一个<code>R</code>: <code>f[i*2+j][j]=min(f[i*2+j][j],f[i][j]+1)</code></p>
-<p>注意，这里需要判断一下区间<code>(j,i]</code>和区间<code>(i,i*2-j]</code>是不是完全相同。完全相同才能执行<code>3.</code>这一步。</p>
 <p>代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">char s[100];</span><br><span class="line">int f[60][60],n,ans=0x3f3f3f3f;</span><br><span class="line">bool get(int mid,int len)</span><br><span class="line">&#123;</span><br><span class="line">    if(mid+len&gt;n) return false;</span><br><span class="line">    for(int k=1;k&lt;=len;k++)</span><br><span class="line">        if(s[mid-len+k]!=s[mid+k])</span><br><span class="line">            return false;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%s&quot;,s+1);</span><br><span class="line">    memset(f,0x3f,sizeof(f));</span><br><span class="line">    n=strlen(s+1);</span><br><span class="line">    f[0][0]=0;</span><br><span class="line">    for(int i=0;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(int j=0;j&lt;=i;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            f[i][i]=min(f[i][i],f[i][j]+1);</span><br><span class="line">            f[i+1][j]=min(f[i+1][j],f[i][j]+1);</span><br><span class="line">            if(get(i,i-j))</span><br><span class="line">                f[i*2-j][j]=min(f[i*2-j][j],f[i][j]+1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i=0;i&lt;=n;i++)</span><br><span class="line">        ans=min(ans,f[n][i]);</span><br><span class="line">    printf(&quot;%d&quot;,ans);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn=200005;</span><br><span class="line">int i,j,s,a,b,c,n,m,cnt=0;</span><br><span class="line">int head[maxn],dis[maxn],vis[maxn];</span><br><span class="line">struct Edge</span><br><span class="line">&#123;</span><br><span class="line">    int nxt,to,c;</span><br><span class="line">&#125;;</span><br><span class="line">Edge edge[maxn*3];</span><br><span class="line">struct node</span><br><span class="line">&#123;</span><br><span class="line">    int id,dis;</span><br><span class="line">    friend bool operator&lt;(node x,node y)</span><br><span class="line">    &#123;</span><br><span class="line">        return x.dis&gt;y.dis;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">priority_queue&lt;node&gt;q;</span><br><span class="line">void add(int x,int y,int c)</span><br><span class="line">&#123;</span><br><span class="line">    cnt++;</span><br><span class="line">    edge[cnt].nxt=head[x];</span><br><span class="line">    edge[cnt].to=y;</span><br><span class="line">    edge[cnt].c=c;</span><br><span class="line">    head[x]=cnt;</span><br><span class="line">&#125;</span><br><span class="line">void dijkstra()</span><br><span class="line">&#123;</span><br><span class="line">    dis[s]=0;</span><br><span class="line">    q.push((node)&#123;s,0&#125;);</span><br><span class="line">    while(!q.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        int x=q.top().id,y=q.top().dis;</span><br><span class="line">        q.pop();</span><br><span class="line">        if(vis[x])</span><br><span class="line">            continue;</span><br><span class="line">        vis[x]=1;</span><br><span class="line">        for(int i=head[x];i;i=edge[i].nxt)</span><br><span class="line">        &#123;</span><br><span class="line">            int w=edge[i].to;</span><br><span class="line">            if(dis[x]+edge[i].c&lt;dis[w])</span><br><span class="line">            &#123;</span><br><span class="line">                dis[w]=dis[x]+edge[i].c;</span><br><span class="line">                if(!vis[w])</span><br><span class="line">                    q.push((node)&#123;w,dis[w]&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d%d%d&quot;,&amp;n,&amp;m,&amp;s);</span><br><span class="line">    memset(vis,0,sizeof(vis));</span><br><span class="line">    for(i=1;i&lt;=n;i++)</span><br><span class="line">        dis[i]=0x7fffffff;</span><br><span class="line">    for(i=1;i&lt;=m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        scanf(&quot;%d%d%d&quot;,&amp;a,&amp;b,&amp;c);</span><br><span class="line">        add(a,b,c);</span><br><span class="line">    &#125;</span><br><span class="line">    dijkstra();</span><br><span class="line">    for(i=1;i&lt;=n;i++)</span><br><span class="line">        printf(&quot;%d &quot;,dis[i]);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
       
@@ -455,7 +451,11 @@
           
             <a href="/tags/题解/" rel="tag"># 题解</a>
           
-            <a href="/tags/dp/" rel="tag"># dp</a>
+            <a href="/tags/对偶图/" rel="tag"># 对偶图</a>
+          
+            <a href="/tags/平面图/" rel="tag"># 平面图</a>
+          
+            <a href="/tags/网络流/" rel="tag"># 网络流</a>
           
         </div>
       
@@ -468,8 +468,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/23/JoyOI 数字三角形2 题解/" rel="next" title="JoyOI 数字三角形2 题解">
-                <i class="fa fa-chevron-left"></i> JoyOI 数字三角形2 题解
+              <a href="/2019/07/24/洛谷 P2782 友好城市 题解/" rel="next" title="洛谷 P2782 友好城市 题解">
+                <i class="fa fa-chevron-left"></i> 洛谷 P2782 友好城市 题解
               </a>
             
           </div>
@@ -477,10 +477,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/23/JoyOI 中中的背包 题解/" rel="prev" title="JoyOI 中中的背包 题解">
-                JoyOI 中中的背包 题解 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
