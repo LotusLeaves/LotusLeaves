@@ -2,15 +2,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
   
 
 
@@ -18,7 +9,7 @@
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -29,6 +20,8 @@
 
 
 
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -45,22 +38,9 @@
 
 
 
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
-
-<link rel="stylesheet" href="/css/main.css?v=6.7.0">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/Willett.png?v=6.7.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/Willett.png?v=6.7.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -68,18 +48,63 @@
 
 
 
-<script id="hexo.configurations">
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="lxy's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="lxy&#39;s blog">
+<meta property="og:url" content="https:LotusLeaves.github.io/index.html">
+<meta property="og:site_name" content="lxy&#39;s blog">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="lxy&#39;s blog">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    version: '6.7.0',
+    version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -91,33 +116,12 @@
 </script>
 
 
-  
-
-
-
-
-  <meta property="og:type" content="website">
-<meta property="og:title" content="lxy&#39;s blog">
-<meta property="og:url" content="https:LotusLeaves.github.io/index.html">
-<meta property="og:site_name" content="lxy&#39;s blog">
-<meta property="og:locale" content="zh-Hans">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="lxy&#39;s blog">
-
-
-
-
-
 
   <link rel="canonical" href="https:LotusLeaves.github.io/">
 
 
 
-<script id="page.configurations">
-  CONFIG.page = {
-    sidebar: "",
-  };
-</script>
+
 
   <title>lxy's blog</title>
   
@@ -128,35 +132,6 @@
 
 
 
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .motion-element,
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
-
-  .use-motion .logo,
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
 
 </head>
 
@@ -173,7 +148,7 @@
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta">
+  <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
@@ -183,16 +158,13 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-    
       
         <p class="site-subtitle">Achieve my dream ...</p>
       
-    
-    
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
+    <button>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -200,103 +172,65 @@
   </div>
 </div>
 
-
-
 <nav class="site-nav">
+  
+
   
     <ul id="menu" class="menu">
       
         
-        
-        
-          
-          <li class="menu-item menu-item-home menu-item-active">
-
-    
-    
-    
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
       
-    
-
-    
-
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
-
-  </li>
         
-        
-        
-          
-          <li class="menu-item menu-item-about">
-
-    
-    
-    
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
       
-    
-
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
-
-  </li>
         
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-
-    
-    
-    
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
       
-    
-
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
-
-  </li>
         
-        
-        
-          
-          <li class="menu-item menu-item-categories">
-
-    
-    
-    
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
       
-    
-
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
-
-  </li>
         
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-
-    
-    
-    
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
       
-    
 
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
-
-  </li>
-
-      
       
     </ul>
-  
-
   
 
   
@@ -304,23 +238,12 @@
 
 
 
-  
-
-
-
-</div>
+ </div>
     </header>
-
-    
-
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          
-            
-
-          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -333,8 +256,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -345,7 +266,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lxy">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/haer.jpg">
+      <meta itemprop="image" content="/images/touxiang.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -359,20 +280,11 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/2019/07/31/贝多芬计划/" class="post-title-link" itemprop="url">贝多芬计划</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2019/07/31/贝多芬计划/" itemprop="url">贝多芬计划</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -380,18 +292,13 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="创建时间：2019-07-31 16:35:00 / 修改时间：16:37:51" itemprop="dateCreated datePublished" datetime="2019-07-31T16:35:00+08:00">2019-07-31</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-31T16:35:00+08:00">
+                2019-07-31
+              </time>
             
 
             
-              
 
-              
             
           </span>
 
@@ -405,7 +312,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2019/07/31/贝多芬计划/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/07/31/贝多芬计划/" itemprop="commentCount"></span>
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/31/贝多芬计划/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -442,18 +349,12 @@
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-      
-    
     
 
     
@@ -486,8 +387,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -498,7 +397,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lxy">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/haer.jpg">
+      <meta itemprop="image" content="/images/touxiang.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -512,20 +411,11 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/2019/07/26/bzoj 1001 [BeiJing2006]狼抓兔子 题解/" class="post-title-link" itemprop="url">bzoj 1001 [BeiJing2006]狼抓兔子 题解</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2019/07/26/bzoj 1001 [BeiJing2006]狼抓兔子 题解/" itemprop="url">bzoj 1001 [BeiJing2006]狼抓兔子 题解</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -533,30 +423,13 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="创建时间：2019-07-26 09:40:02" itemprop="dateCreated datePublished" datetime="2019-07-26T09:40:02+08:00">2019-07-26</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-26T09:40:02+08:00">
+                2019-07-26
+              </time>
             
 
             
-              
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-08-13 14:51:14" itemprop="dateModified" datetime="2019-08-13T14:51:14+08:00">2019-08-13</time>
-              
             
           </span>
 
@@ -570,7 +443,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2019/07/26/bzoj 1001 [BeiJing2006]狼抓兔子 题解/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/07/26/bzoj 1001 [BeiJing2006]狼抓兔子 题解/" itemprop="commentCount"></span>
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/26/bzoj 1001 [BeiJing2006]狼抓兔子 题解/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -601,31 +474,23 @@
         
           <p><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1001" target="_blank" rel="noopener">题目链接</a></p>
 <p>首先想到的是最大流=最小割，可以跑一遍网络流。TLE。还有一个定理：平面图的最大流=其对偶图的最短路。</p>
-<p>建对偶图，然后跑<code>dijkstra+堆优化</code>即可。</p>
+<p>建对偶图，然后跑dijkstra+堆优化即可。</p>
           <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/07/26/bzoj 1001 [BeiJing2006]狼抓兔子 题解/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/26/bzoj 1001 [BeiJing2006]狼抓兔子 题解/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
           <!--/noindex-->
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-      
-    
     
 
     
@@ -658,8 +523,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -670,7 +533,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lxy">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/haer.jpg">
+      <meta itemprop="image" content="/images/touxiang.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -684,20 +547,11 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/2019/07/24/洛谷 P2782 友好城市 题解/" class="post-title-link" itemprop="url">洛谷 P2782 友好城市 题解</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2019/07/24/洛谷 P2782 友好城市 题解/" itemprop="url">洛谷 P2782 友好城市 题解</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -705,30 +559,13 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="创建时间：2019-07-24 09:21:13" itemprop="dateCreated datePublished" datetime="2019-07-24T09:21:13+08:00">2019-07-24</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-24T09:21:13+08:00">
+                2019-07-24
+              </time>
             
 
             
-              
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-08-13 14:54:28" itemprop="dateModified" datetime="2019-08-13T14:54:28+08:00">2019-08-13</time>
-              
             
           </span>
 
@@ -742,7 +579,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2019/07/24/洛谷 P2782 友好城市 题解/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/07/24/洛谷 P2782 友好城市 题解/" itemprop="commentCount"></span>
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/24/洛谷 P2782 友好城市 题解/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -775,29 +612,21 @@
 <p><code>O(n^2)</code>的做法：先把南岸或者北岸排序，然后找另一边的最长不下降子序列。但是过不了这题。</p>
 <p><code>O(nlogn)</code>的做法：优化找最长不下降子序列的过程，使用<code>upper_bound</code>函数找到第一个比当前大的数，替换它。</p>
           <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/07/24/洛谷 P2782 友好城市 题解/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/24/洛谷 P2782 友好城市 题解/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
           <!--/noindex-->
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-      
-    
     
 
     
@@ -830,8 +659,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -842,7 +669,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lxy">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/haer.jpg">
+      <meta itemprop="image" content="/images/touxiang.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -856,20 +683,11 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/2019/07/23/JoyOI 中中的背包 题解/" class="post-title-link" itemprop="url">JoyOI 中中的背包 题解</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2019/07/23/JoyOI 中中的背包 题解/" itemprop="url">JoyOI 中中的背包 题解</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -877,18 +695,13 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="创建时间：2019-07-23 19:52:04 / 修改时间：19:59:27" itemprop="dateCreated datePublished" datetime="2019-07-23T19:52:04+08:00">2019-07-23</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-23T19:52:04+08:00">
+                2019-07-23
+              </time>
             
 
             
-              
 
-              
             
           </span>
 
@@ -902,7 +715,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2019/07/23/JoyOI 中中的背包 题解/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/07/23/JoyOI 中中的背包 题解/" itemprop="commentCount"></span>
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/23/JoyOI 中中的背包 题解/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -935,29 +748,21 @@
 <p>最暴力的做法是<code>O(n^2m)</code>的，太慢了，怎么办？</p>
 <p>只要把每个物品都拆开，比如像 <code>z[i]=13</code></p>
           <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/07/23/JoyOI 中中的背包 题解/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/23/JoyOI 中中的背包 题解/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
           <!--/noindex-->
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-      
-    
     
 
     
@@ -990,8 +795,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1002,7 +805,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lxy">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/haer.jpg">
+      <meta itemprop="image" content="/images/touxiang.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1016,20 +819,11 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/2019/07/23/洛谷 P2470 [SCOI2007]压缩 题解/" class="post-title-link" itemprop="url">洛谷 P2470 [SCOI2007]压缩 题解</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2019/07/23/洛谷 P2470 [SCOI2007]压缩 题解/" itemprop="url">洛谷 P2470 [SCOI2007]压缩 题解</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1037,18 +831,13 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="创建时间：2019-07-23 18:32:59 / 修改时间：19:49:22" itemprop="dateCreated datePublished" datetime="2019-07-23T18:32:59+08:00">2019-07-23</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-23T18:32:59+08:00">
+                2019-07-23
+              </time>
             
 
             
-              
 
-              
             
           </span>
 
@@ -1062,7 +851,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2019/07/23/洛谷 P2470 [SCOI2007]压缩 题解/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/07/23/洛谷 P2470 [SCOI2007]压缩 题解/" itemprop="commentCount"></span>
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/23/洛谷 P2470 [SCOI2007]压缩 题解/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1095,29 +884,21 @@
 <p>设<code>f[i][j]</code>为当前处理到第<code>i</code>个字符，上个<code>M</code>放在了第<code>j</code>个字符之后的最小长度。更新的时候使用刷表法。</p>
 <p>有三种情况：</p>
           <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/07/23/洛谷 P2470 [SCOI2007]压缩 题解/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/23/洛谷 P2470 [SCOI2007]压缩 题解/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
           <!--/noindex-->
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-      
-    
     
 
     
@@ -1150,8 +931,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1162,7 +941,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lxy">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/haer.jpg">
+      <meta itemprop="image" content="/images/touxiang.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1176,20 +955,11 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/2019/07/23/JoyOI 数字三角形2 题解/" class="post-title-link" itemprop="url">JoyOI 数字三角形2 题解</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2019/07/23/JoyOI 数字三角形2 题解/" itemprop="url">JoyOI 数字三角形2 题解</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1197,30 +967,13 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="创建时间：2019-07-23 13:08:43" itemprop="dateCreated datePublished" datetime="2019-07-23T13:08:43+08:00">2019-07-23</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-23T13:08:43+08:00">
+                2019-07-23
+              </time>
             
 
             
-              
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-07-24 09:19:27" itemprop="dateModified" datetime="2019-07-24T09:19:27+08:00">2019-07-24</time>
-              
             
           </span>
 
@@ -1234,7 +987,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2019/07/23/JoyOI 数字三角形2 题解/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/07/23/JoyOI 数字三角形2 题解/" itemprop="commentCount"></span>
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/23/JoyOI 数字三角形2 题解/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1267,29 +1020,21 @@
 <p>题目要求结果<code>mod 100</code>最大，一般的<code>dp</code>肯定不行。可以设<code>bool f[i][j][k]</code>为走到<code>(i,j)</code>这个点<code>mod 100</code>能不能得到<code>k</code></p>
 <p>可以用自己更新别人。</p>
           <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/07/23/JoyOI 数字三角形2 题解/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/23/JoyOI 数字三角形2 题解/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
           <!--/noindex-->
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-      
-    
     
 
     
@@ -1322,8 +1067,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1334,7 +1077,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lxy">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/haer.jpg">
+      <meta itemprop="image" content="/images/touxiang.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1348,20 +1091,11 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/2019/07/23/洛谷 P4302 [SCOI2003]字符串折叠 题解/" class="post-title-link" itemprop="url">洛谷 P4302 [SCOI2003]字符串折叠 题解</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2019/07/23/洛谷 P4302 [SCOI2003]字符串折叠 题解/" itemprop="url">洛谷 P4302 [SCOI2003]字符串折叠 题解</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1369,18 +1103,13 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="创建时间：2019-07-23 12:46:33 / 修改时间：13:15:12" itemprop="dateCreated datePublished" datetime="2019-07-23T12:46:33+08:00">2019-07-23</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-23T12:46:33+08:00">
+                2019-07-23
+              </time>
             
 
             
-              
 
-              
             
           </span>
 
@@ -1394,7 +1123,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2019/07/23/洛谷 P4302 [SCOI2003]字符串折叠 题解/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/07/23/洛谷 P4302 [SCOI2003]字符串折叠 题解/" itemprop="commentCount"></span>
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/23/洛谷 P4302 [SCOI2003]字符串折叠 题解/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1427,29 +1156,21 @@
 <p>设<code>f[i][j]</code>为表示区间<code>[i,j]</code>的最小长度。<code>get(i,j,k,h)</code>表示区间<code>[i,j]</code>和区间<code>[k,h]</code>能否折叠。</p>
 <p>如果能够折叠：<code>f[i][j]=min(f[i][j],f[i][k]+2+cal((j-i+1)/(k-i+1)))</code> （其中<code>cal(x)</code>返回的是<code>x</code>的位数）</p>
           <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/07/23/洛谷 P4302 [SCOI2003]字符串折叠 题解/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/23/洛谷 P4302 [SCOI2003]字符串折叠 题解/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
           <!--/noindex-->
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-      
-    
     
 
     
@@ -1482,8 +1203,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1494,7 +1213,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lxy">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/haer.jpg">
+      <meta itemprop="image" content="/images/touxiang.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1508,20 +1227,11 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/2019/07/23/洛谷 P4766 [CERC2014]Outer space invaders 题解/" class="post-title-link" itemprop="url">洛谷 P4766 [CERC2014]Outer space invaders 题解</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2019/07/23/洛谷 P4766 [CERC2014]Outer space invaders 题解/" itemprop="url">洛谷 P4766 [CERC2014]Outer space invaders 题解</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1529,21 +1239,38 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="创建时间：2019-07-23 09:06:00 / 修改时间：13:13:45" itemprop="dateCreated datePublished" datetime="2019-07-23T09:06:00+08:00">2019-07-23</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-23T09:06:00+08:00">
+                2019-07-23
+              </time>
             
 
             
-              
 
-              
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/题解/" itemprop="url" rel="index">
+                    <span itemprop="name">题解</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -1554,7 +1281,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2019/07/23/洛谷 P4766 [CERC2014]Outer space invaders 题解/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/07/23/洛谷 P4766 [CERC2014]Outer space invaders 题解/" itemprop="commentCount"></span>
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/23/洛谷 P4766 [CERC2014]Outer space invaders 题解/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1587,29 +1314,21 @@
 <p>设<code>f[i][j]</code>为消灭 <code>i</code>，<code>j</code> 时间内外星人的最少花费。设这段区间最晚出现的外星人编号为<code>id</code>，则转移方程为：</p>
 <p><code>f[i][j]=min(f[i][j],f[i][k-1]+a[id].d+f[k+1][j])</code></p>
           <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/07/23/洛谷 P4766 [CERC2014]Outer space invaders 题解/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/23/洛谷 P4766 [CERC2014]Outer space invaders 题解/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
           <!--/noindex-->
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-      
-    
     
 
     
@@ -1642,8 +1361,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1654,7 +1371,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lxy">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/haer.jpg">
+      <meta itemprop="image" content="/images/touxiang.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1668,20 +1385,11 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/2019/07/23/离散化/" class="post-title-link" itemprop="url">离散化</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2019/07/23/离散化/" itemprop="url">离散化</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1689,18 +1397,13 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="创建时间：2019-07-23 07:59:02 / 修改时间：08:17:06" itemprop="dateCreated datePublished" datetime="2019-07-23T07:59:02+08:00">2019-07-23</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-23T07:59:02+08:00">
+                2019-07-23
+              </time>
             
 
             
-              
 
-              
             
           </span>
 
@@ -1714,7 +1417,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2019/07/23/离散化/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/07/23/离散化/" itemprop="commentCount"></span>
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/23/离散化/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1745,29 +1448,21 @@
         
           <p><strong>离散化</strong>，把无限空间中有限的个体映射到有限的空间中去，以此提高算法的时空效率。也就是说，我们不关心数据的真实大小，只关心数据的 <strong>相对</strong> 大小。比如我们要把<code>1e5</code>个范围是<code>1e9</code>的数进行并查集。</p>
           <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/07/23/离散化/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/23/离散化/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
           <!--/noindex-->
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-      
-    
     
 
     
@@ -1800,8 +1495,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1812,7 +1505,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lxy">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/haer.jpg">
+      <meta itemprop="image" content="/images/touxiang.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1826,20 +1519,11 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/2019/07/21/读入/" class="post-title-link" itemprop="url">读入</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2019/07/21/读入/" itemprop="url">读入</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1847,30 +1531,13 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="创建时间：2019-07-21 18:49:29" itemprop="dateCreated datePublished" datetime="2019-07-21T18:49:29+08:00">2019-07-21</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-21T18:49:29+08:00">
+                2019-07-21
+              </time>
             
 
             
-              
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-07-23 08:26:51" itemprop="dateModified" datetime="2019-07-23T08:26:51+08:00">2019-07-23</time>
-              
             
           </span>
 
@@ -1884,7 +1551,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2019/07/21/读入/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/07/21/读入/" itemprop="commentCount"></span>
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/21/读入/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1916,29 +1583,21 @@
           <h3 id="cin、cout"><a href="#cin、cout" class="headerlink" title="cin、cout"></a>cin、cout</h3><p>代码如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cin&gt;&gt;a&gt;&gt;b;</span><br><span class="line">cout&lt;&lt;a+b;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/07/21/读入/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/21/读入/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
           <!--/noindex-->
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-      
-    
     
 
     
@@ -1967,13 +1626,17 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
 
           </div>
           
+
+
+          
+
         </div>
         
           
@@ -1994,86 +1657,74 @@
 
       
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/haer.jpg" alt="lxy">
+              <img class="site-author-image" itemprop="image" src="/images/touxiang.jpg" alt="lxy">
             
               <p class="site-author-name" itemprop="name">lxy</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">11</span>
-                    <span class="site-state-item-name">日志</span>
-                  </a>
-                </div>
-              
+          <nav class="site-state motion-element">
 
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">12</span>
-                    <span class="site-state-item-name">标签</span>
-                  </a>
-                </div>
-              
-            </nav>
-          
-
-          
-
-          
-
-          
-
-          
-          
-
-          
             
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
           
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
           
 
         </div>
-      </div>
+      </section>
 
       
 
@@ -2090,18 +1741,16 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
+  <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">lxy</span>
 
   
-
-  
 </div>
 
 
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
 
@@ -2109,13 +1758,12 @@
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v6.7.0</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
 
 
 
 
         
-
 
 
 
@@ -2136,14 +1784,11 @@
 
     
 
-    
-
-    
   </div>
 
   
 
-<script>
+<script type="text/javascript">
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -2157,11 +1802,7 @@
 
 
 
-
-
-
-
-
+  
 
 
 
@@ -2175,46 +1816,83 @@
 
 
   
-  <script src="/lib/jquery/index.js?v=2.1.3"></script>
-
   
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-
-  
-
-
-  <script src="/js/src/utils.js?v=6.7.0"></script>
-
-  <script src="/js/src/motion.js?v=6.7.0"></script>
-
-
-
-  
-  
-
-
-  <script src="/js/src/affix.js?v=6.7.0"></script>
-
-  <script src="/js/src/schemes/pisces.js?v=6.7.0"></script>
-
-
-
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
   
 
   
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
 
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
 
-  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
 
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
 
 
   
 
 
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
 
   
 
@@ -2225,35 +1903,32 @@
 
 
 
-  
-  
-  
-  
-  <script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
   <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-  <script>
+  
+  <script type="text/javascript">
     var GUEST = ['nick','mail','link'];
     var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(function (item) {
-      return GUEST.indexOf(item) > -1;
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
     });
     new Valine({
-      el: '#comments' ,
-      verify: false,
-      notify: false,
-      appId: 'r7l1GD6lMjyouUNUpOXtCrGP-gzGzoHsz',
-      appKey: '4sfALfDN3Q7XzYLTPCNM1Dab',
-      placeholder: 'Just go go',
-      avatar: 'mm',
-      meta:guest,
-      pageSize: '10' || 10,
-      visitor: false
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'r7l1GD6lMjyouUNUpOXtCrGP-gzGzoHsz',
+        appKey: '4sfALfDN3Q7XzYLTPCNM1Dab',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
     });
   </script>
 
 
 
-
   
 
 
@@ -2267,7 +1942,6 @@
   
 
   
-
   
 
   
@@ -2276,16 +1950,5 @@
 
   
 
-  
-
-  
-
-  
-
-  
-
-  
-
-  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 </body>
 </html>
