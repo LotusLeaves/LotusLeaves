@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[bzoj 1001 [BeiJing2006]狼抓兔子 题解]]></title>
+    <url>%2F2019%2F07%2F26%2Fbzoj%201001%20%5BBeiJing2006%5D%E7%8B%BC%E6%8A%93%E5%85%94%E5%AD%90%20%E9%A2%98%E8%A7%A3%2F</url>
+    <content type="text"><![CDATA[Link Solution首先想到的是最大流 $=$ 最小割，可以跑一遍网络流。$TLE$。还有一个定理：平面图的最大流 $=$ 其对偶图的最短路。 建对偶图，然后跑 $dijkstra+$ 堆优化即可。 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;cstring&gt;#include &lt;queue&gt;#define M (n - 1) * (m - 1) * 2 + 1using namespace std;const int N = 1000006;struct edge&#123; int nxt, to,w;&#125; e[N * 6 + 106];struct node&#123; int id, dis; friend bool operator &lt; (node x, node y) &#123; return x.dis &gt; y.dis; &#125;&#125;;priority_queue &lt; node &gt; q;int n, m, a, cnt = 0, dis[N * 2 + 106], vis[N * 2 + 106], head[N * 2 + 106];inline int read()&#123; char c = getchar(); int x = 0, f = 1; while(c &lt; '0' || c &gt; '9') &#123; if(c == '-') f = -1; c = getchar(); &#125; while(c &gt;= '0' &amp;&amp; c &lt;= '9') &#123; x = x * 10 + c - 48; c = getchar(); &#125; return x * f;&#125;void add(int x, int y, int w)&#123; e[++cnt] = (edge) &#123; head[x], y, w &#125;; head[x] = cnt; e[++cnt] = (edge) &#123; head[y], x, w &#125;; head[y] = cnt;&#125;void dijkstra()&#123; memset(dis, 0x3f, sizeof(dis)); memset(vis, 0, sizeof(vis)); q.push((node) &#123; 0, 0 &#125;); dis[0] = 0; while(!q.empty()) &#123; int a = q.top().id; q.pop(); if(vis[a]) continue; vis[a] = 1; for(int i = head[a]; i; i = e[i].nxt) &#123; int v = e[i].to; if(dis[v] &gt; dis[a] + e[i].w) &#123; dis[v] = dis[a] + e[i].w; if(!vis[v]) q.push((node) &#123; v, dis[v] &#125;); &#125; &#125; &#125;&#125;int ID(int x, int y, int k)&#123; if(k == 1) return (x - 1) * (m - 1) * 2 + y; return (x - 1) * (m - 1) * 2 + y + m - 1;&#125;int main()&#123; n = read(), m = read(); memset(head, 0, sizeof(head)); if(n == 1 || m == 1) &#123; int f = 0x3f3f3f3f; for(int i = 1; i &lt; max(n, m); i++) &#123; a = read(); f = min(f, a); &#125; printf("%d", f); return 0; &#125; for(int i = 1; i &lt;= n; i++) for(int j = 1; j &lt; m; j++) &#123; a = read(); if(i == 1) add(ID(i, j, 1), 0, a); else if(i == n) add(ID(i - 1, j, 2), M, a); else add(ID(i, j, 1), ID(i - 1, j, 2), a); &#125; for(int i = 1; i &lt; n; i++) for(int j = 1; j &lt;= m; j++) &#123; a = read(); if(j == 1) add(ID(i, j, 2), M, a); else if(j == m) add(ID(i, j - 1, 1), 0, a); else add(ID(i, j, 2), ID(i, j - 1, 1), a); &#125; for(int i = 1; i &lt; n; i++) for(int j = 1; j &lt; m; j++) &#123; a = read(); add(ID(i, j, 1), ID(i, j, 2), a); &#125; dijkstra(); printf("%d", dis[M]); return 0;&#125;]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>题解</tag>
+        <tag>对偶图</tag>
+        <tag>平面图</tag>
+        <tag>网络流</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[洛谷 P2782 友好城市 题解]]></title>
+    <url>%2F2019%2F07%2F24%2F%E6%B4%9B%E8%B0%B7%20P2782%20%E5%8F%8B%E5%A5%BD%E5%9F%8E%E5%B8%82%20%E9%A2%98%E8%A7%A3%2F</url>
+    <content type="text"><![CDATA[Link Solution$O(n^2)$ 的做法：先把南岸或者北岸排序，然后找另一边的最长不下降子序列。但是过不了这题。 $O(nlogn)$ 的做法：优化找最长不下降子序列的过程，使用 $upper_bound$ 函数找到第一个比当前大的数，替换它。 Code1234567891011121314151617181920212223242526272829#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;cstring&gt;#include &lt;algorithm&gt;using namespace std;const int N = 300005;struct city&#123; int s, n;&#125; a[N];int n, len = 0, d[N];bool cmp(city a, city b) &#123; return a.n &lt; b.n; &#125;int main()&#123; scanf("%d", &amp;n); for(int i = 1; i &lt;= n; i++) scanf("%d%d", &amp;a[i].s, &amp;a[i].n); sort(a + 1, a + n + 1, cmp); d[++len] = a[1].s; //初始化 for(int i = 2; i &lt;= n; i++) &#123; int id = upper_bound(d + 1, d + len + 1, a[i].s) - d; d[id] = a[i].s; //当前北岸编号较大，南岸编号较小，一定比刚才优 if(id &gt; len) len++; //如果新开了一个位置 &#125; printf("%d", len); return 0;&#125;]]></content>
+      <tags>
+        <tag>题解</tag>
+        <tag>dp</tag>
+        <tag>排序</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[JoyOI 中中的背包 题解]]></title>
+    <url>%2F2019%2F07%2F23%2FJoyOI%20%E4%B8%AD%E4%B8%AD%E7%9A%84%E8%83%8C%E5%8C%85%20%E9%A2%98%E8%A7%A3%2F</url>
+    <content type="text"><![CDATA[题目链接 最暴力的做法是O(n^2m)的，太慢了，怎么办？ 只要把每个物品都拆开，比如像 z[i]=13 我们把这个物品拆成1,2,4,6，每个物品只能选1次 具体的拆法是：先按照 22 的次方来拆，直到当前和 +【 2 的下一个次方数】 &gt;z[i] ，就按照【 z[i]−2 的当前次方数】捆绑最后一堆物体 这4个数可以凑出1−13的所有数，所以跑一遍01背包模板 为什么能凑出？简单的证明： 比如z[i]=31，拆出来是1,2,4,8,16 转化成二进制就是： 1 10 100 1000 10000 100000 如果右对齐一下的话可以看到任意一位都有且仅有一个1。把要凑的数转化成二进制，每一位有1的话就加上这一位有1的数。 那么这种情况是正好能用22的次方数凑出的。如果不能，比如 3737 ，最后一堆捆绑的物品就是6。当选择1-31个物品时，就按照上面的凑法；当选择32-37个物品时，就先选择6这一堆，然后再按照上面的凑法。 这样要被凑的数就一定可以通过相加得出。 代码: 12345678910111213141516171819202122232425262728293031323334353637383940#include&lt;iostream&gt;#include&lt;cstdio&gt;#define int long longusing namespace std;int n,m,cnt=0,ans=0,v[100000],w[100000],f[9001];signed main()&#123; scanf("%lld%lld",&amp;n,&amp;m); for(int i=1;i&lt;=n;i++) &#123; int a,b,c,x=1; scanf("%lld%lld%lld",&amp;a,&amp;b,&amp;c); while(x&lt;=c) &#123; cnt++; v[cnt]=a*x; w[cnt]=b*x; c-=x; x*=2; &#125; if(c) &#123; cnt++; v[cnt]=a*c; w[cnt]=b*c; &#125; &#125; n=cnt; for(int i=1;i&lt;=n;i++) &#123; for(int j=m;j&gt;=v[i];j--) &#123; f[j]=max(f[j],f[j-v[i]]+w[i]); &#125; &#125; for(int i=1;i&lt;=m;i++) ans=max(ans,f[i]); printf("%lld",ans); return 0;&#125;]]></content>
+      <tags>
+        <tag>题解</tag>
+        <tag>dp</tag>
+        <tag>背包</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[洛谷 P2470 [SCOI2007]压缩 题解]]></title>
+    <url>%2F2019%2F07%2F23%2F%E6%B4%9B%E8%B0%B7%20P2470%20%5BSCOI2007%5D%E5%8E%8B%E7%BC%A9%20%E9%A2%98%E8%A7%A3%2F</url>
+    <content type="text"><![CDATA[题目链接 设f[i][j]为当前处理到第i个字符，上个M放在了第j个字符之后的最小长度。更新的时候使用刷表法。 有三种情况： 1.什么也不做：f[i+1][j]=min(f[i+1][j],f[i][j]+1) 2.在后面放一个M：f[i][i]=min(f[i][i],f[i][j]+1) 3.在后面放一个R: f[i*2+j][j]=min(f[i*2+j][j],f[i][j]+1) 注意，这里需要判断一下区间(j,i]和区间(i,i*2-j]是不是完全相同。完全相同才能执行3.这一步。 代码： 1234567891011121314151617181920212223242526272829303132333435#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;using namespace std;char s[100];int f[60][60],n,ans=0x3f3f3f3f;bool get(int mid,int len)&#123; if(mid+len&gt;n) return false; for(int k=1;k&lt;=len;k++) if(s[mid-len+k]!=s[mid+k]) return false; return true;&#125;int main()&#123; scanf(&quot;%s&quot;,s+1); memset(f,0x3f,sizeof(f)); n=strlen(s+1); f[0][0]=0; for(int i=0;i&lt;=n;i++) &#123; for(int j=0;j&lt;=i;j++) &#123; f[i][i]=min(f[i][i],f[i][j]+1); f[i+1][j]=min(f[i+1][j],f[i][j]+1); if(get(i,i-j)) f[i*2-j][j]=min(f[i*2-j][j],f[i][j]+1); &#125; &#125; for(int i=0;i&lt;=n;i++) ans=min(ans,f[n][i]); printf(&quot;%d&quot;,ans); return 0;&#125;]]></content>
+      <tags>
+        <tag>题解</tag>
+        <tag>dp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[JoyOI 数字三角形2 题解]]></title>
+    <url>%2F2019%2F07%2F23%2FJoyOI%20%E6%95%B0%E5%AD%97%E4%B8%89%E8%A7%92%E5%BD%A22%20%E9%A2%98%E8%A7%A3%2F</url>
+    <content type="text"><![CDATA[题目链接 题目要求结果mod 100最大，一般的dp肯定不行。可以设bool f[i][j][k]为走到(i,j)这个点mod 100能不能得到k 可以用自己更新别人。 代码如下： 123456789101112131415161718192021222324252627282930313233343536373839#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;cstdio&gt;using namespace std;int n,f[100][100][150],a[50][50];int main()&#123; memset(f,0,sizeof(f)); scanf("%d",&amp;n); for(int i=1;i&lt;=n;i++) for(int j=1;j&lt;=i;j++) scanf("%d",&amp;a[i][j]); f[1][1][a[1][1]%100]=1; for(int i=1;i&lt;=n;i++) &#123; for(int j=1;j&lt;=i;j++) &#123; for(int k=0;k&lt;100;k++) &#123; if(f[i][j][k]) &#123; f[i+1][j][(k+a[i+1][j])%100]=1; f[i+1][j+1][(k+a[i+1][j+1])%100]=1; &#125; &#125; &#125; &#125; int ans=-0x3f3f3f3f; for(int i=1;i&lt;=n;i++) &#123; for(int k=0;k&lt;100;k++) &#123; if(f[n][i][k]) ans=max(ans,k); &#125; &#125; printf("%d",ans); return 0;&#125;]]></content>
+      <tags>
+        <tag>题解</tag>
+        <tag>dp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[洛谷 P4302 [SCOI2003]字符串折叠 题解]]></title>
+    <url>%2F2019%2F07%2F23%2F%E6%B4%9B%E8%B0%B7%20P4302%20%5BSCOI2003%5D%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8A%98%E5%8F%A0%20%E9%A2%98%E8%A7%A3%2F</url>
+    <content type="text"><![CDATA[题目链接 设 f[i][j] 为表示区间 [i,j] 的最小长度。 get(i,j,k,h) 表示区间 [i,j] 和区间 [k,h] 能否折叠。 如果能够折叠：f[i][j]=min(f[i][j],f[i][k]+2+cal((j-i+1)/(k-i+1))) （其中 cal(x) 返回的是 x 的位数） 否则：f[i][j]=min(f[i][j],f[i][k]+f[k+1][j]) 代码： 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;cstring&gt;#include &lt;algorithm&gt;using namespace std;const int N = 300;string s;int f[N][N], n;bool get(int x1, int y1, int x2, int y2)&#123; if((y2 - x1 + 1) % (y1 - x1 + 1) != 0) return false; int len = y1 - x1 + 1; for(int i = x2; i &lt;= y2; i++) &#123; if(s[i] != s[i - len]) return false; &#125; return true;&#125;int cal(int k)&#123; int ans = 0; while(k) &#123; k /= 10; ans++; &#125; return ans;&#125;int main()&#123; cin &gt;&gt; s; n = s.size(); for(int i = 0; i &lt; n; i++) f[i][i] = 1; for(int i = 1; i &lt; n; i++) &#123; for(int l = 0; l + i &lt; n; l++) &#123; int r = l + i; f[l][r] = r - l + 1; for(int k = l; k &lt; r; k++) &#123; if(!get(l, k, k + 1, r)) f[l][r] = min(f[l][r], f[l][k] + f[k + 1][r]); else f[l][r] = min(f[l][r], f[l][k] + 2 + cal((r - l + 1) / (k - l + 1))); &#125; &#125; &#125; printf("%d", f[0][n - 1]); return 0;&#125;]]></content>
+      <tags>
+        <tag>题解</tag>
+        <tag>dp</tag>
+        <tag>区间dp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[洛谷 P4766 [CERC2014]Outer space invaders 题解]]></title>
+    <url>%2F2019%2F07%2F23%2F%E6%B4%9B%E8%B0%B7%20P4766%20%5BCERC2014%5DOuter%20space%20invaders%20%E9%A2%98%E8%A7%A3%2F</url>
+    <content type="text"><![CDATA[题目链接 设f[i][j]为消灭 i，j 时间内外星人的最少花费。设这段区间最晚出现的外星人编号为id，则转移方程为： f[i][j]=min(f[i][j],f[i][k-1]+a[id].d+f[k+1][j]) 如果开二维数组，10000 有点太大。但是题面只出现了 300 个外星人，所以需要离散化。 代码如下 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;using namespace std;const int maxn=50005;struct node&#123; int l,r,d;&#125; a[maxn];int T,n,m,t[maxn],cnt,f[700][700];void solve()&#123; cnt=0; scanf("%d",&amp;n); for(int i=1;i&lt;=n;i++) &#123; scanf("%d%d%d",&amp;a[i].l,&amp;a[i].r,&amp;a[i].d); t[++cnt]=a[i].l; t[++cnt]=a[i].r; &#125; sort(t+1,t+cnt+1); m=unique(t+1,t+cnt+1)-t-1; for(int i=1;i&lt;=n;i++) &#123; a[i].l=lower_bound(t+1,t+m+1,a[i].l)-t; a[i].r=lower_bound(t+1,t+m+1,a[i].r)-t; &#125; for(int i=0;i&lt;=m;i++) &#123; for(int l=1;l+i&lt;=m;l++) &#123; int r=l+i,id=0; for(int j=1;j&lt;=n;j++) if(a[j].l&gt;=l&amp;&amp;a[j].r&lt;=r&amp;&amp;(!id||a[j].d&gt;a[id].d)) id=j; if(!id) &#123; f[l][r]=0; continue; &#125; f[l][r]=0x3f3f3f3f; for(int k=a[id].l;k&lt;=a[id].r;k++) f[l][r]=min(f[l][r],f[l][k-1]+f[k+1][r]+a[id].d); &#125; &#125; printf("%d\n",f[1][m]);&#125;int main()&#123; scanf("%d",&amp;T); while(T--) solve(); return 0;&#125;]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>题解</tag>
+        <tag>dp</tag>
+        <tag>区间dp</tag>
+        <tag>离散化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[离散化]]></title>
+    <url>%2F2019%2F07%2F23%2F%E7%A6%BB%E6%95%A3%E5%8C%96%2F</url>
+    <content type="text"><![CDATA[定义离散化，把无限空间中有限的个体映射到有限的空间中去，以此提高算法的时空效率。也就是说，我们不关心数据的真实大小，只关心数据的 相对 大小。比如我们要把1e5个范围是1e9的数进行并查集。 代码12345678910111213141516171819202122#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;algorithm&gt;using namespace std;const int N = 1000005;int n, m, a[N], t[N];int main()&#123; scanf("%d%d", &amp;n, &amp;m); for(int i = 1; i &lt;= n; i++) &#123; scanf("%d", &amp;a[i]); t[i] = a[i]; &#125; sort(t + 1, t + n + 1); m = unique(t + 1, t + n + 1) - t - 1; for(int i = 1; i &lt;= n; i++) a[i] = lower_bound(t + 1, t + m + 1, a[i]) - t; return 0;&#125; 其中unique返回的是去重后的 尾地址 ，需要减去首地址才能使用。lower_bound返回的是左闭右开区间[first,last)中第一个大于等于val的元素地址（也就是说last是越界的）]]></content>
+      <tags>
+        <tag>离散化</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[读入]]></title>
+    <url>%2F2019%2F07%2F21%2F%E8%AF%BB%E5%85%A5%2F</url>
+    <content type="text"><![CDATA[cin cout代码如下： 12cin &gt;&gt; a &gt;&gt; b;cout &lt;&lt; a + b &lt;&lt; endl; 这种读入方式较慢，主要慢 cout 的在 endl 上。所以我们可以稍微改进一下： 12cin &gt;&gt; a &gt;&gt; b;cout &lt;&lt; a + b &lt;&lt; "\n"; scanf printf代码如下： 12scanf("%d%d", &amp;a, &amp;b);printf("%d\n", a + b); 这可以说是较快的读入方式了，但是许多毒瘤题还是会恶意卡。 快读代码如下： 12345678910111213inline int read()&#123; int x = 0, f = 1; char c = getchar(); while(c &lt; '0' || c &gt; '9') &#123; if(c == '-') f = -1; c = getchar(); &#125; while(c &gt;= '0' &amp;&amp; c &lt;= '9') &#123; x = x * 10 + c - 48; c = getchar(); &#125; return x * f;&#125;int main()&#123; int a, b; a = read(), b = read(); printf("%d\n", a + b);&#125; 这是本蒟蒻知道的最快的读入方式，好像没有题目会卡的吧。]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2019%2F07%2F20%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+  </entry>
+</search>
