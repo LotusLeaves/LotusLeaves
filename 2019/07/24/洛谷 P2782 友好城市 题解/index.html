@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="Link Solution$O(n^2)$ 的做法：先把南岸或者北岸排序，然后找另一边的最长不下降子序列。但是过不了这题。 $O(nlog_{n})$ 的做法：优化找最长不下降子序列的过程，使用 $upper$ _ $bound$ 函数找到第一个比当前大的数，替换它。">
+<meta name="description" content="Description一条河，南北岸各有 $n$ 座城市，每座城市有一个坐标。北岸的每座城市在南岸有一个“友好城市”，且不同城市的友好城市不同。如果在每对友好城市之间连边，在这些边互不相交的情况下使边数最多。 数据范围：$n&amp;lt;=2e5, x_i&amp;lt;=1e6$">
 <meta name="keywords" content="题解,dp,排序">
 <meta property="og:type" content="article">
 <meta property="og:title" content="洛谷 P2782 友好城市 题解">
 <meta property="og:url" content="https:LotusLeaves.github.io/2019/07/24/洛谷 P2782 友好城市 题解/index.html">
 <meta property="og:site_name" content="lxy&#39;s blog">
-<meta property="og:description" content="Link Solution$O(n^2)$ 的做法：先把南岸或者北岸排序，然后找另一边的最长不下降子序列。但是过不了这题。 $O(nlog_{n})$ 的做法：优化找最长不下降子序列的过程，使用 $upper$ _ $bound$ 函数找到第一个比当前大的数，替换它。">
+<meta property="og:description" content="Description一条河，南北岸各有 $n$ 座城市，每座城市有一个坐标。北岸的每座城市在南岸有一个“友好城市”，且不同城市的友好城市不同。如果在每对友好城市之间连边，在这些边互不相交的情况下使边数最多。 数据范围：$n&amp;lt;=2e5, x_i&amp;lt;=1e6$">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-14T06:59:59.293Z">
+<meta property="og:updated_time" content="2019-08-14T13:54:57.104Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="洛谷 P2782 友好城市 题解">
-<meta name="twitter:description" content="Link Solution$O(n^2)$ 的做法：先把南岸或者北岸排序，然后找另一边的最长不下降子序列。但是过不了这题。 $O(nlog_{n})$ 的做法：优化找最长不下降子序列的过程，使用 $upper$ _ $bound$ 函数找到第一个比当前大的数，替换它。">
+<meta name="twitter:description" content="Description一条河，南北岸各有 $n$ 座城市，每座城市有一个坐标。北岸的每座城市在南岸有一个“友好城市”，且不同城市的友好城市不同。如果在每对友好城市之间连边，在这些边互不相交的情况下使边数最多。 数据范围：$n&amp;lt;=2e5, x_i&amp;lt;=1e6$">
 
 
 
@@ -386,11 +386,12 @@
       
 
       
-        <p><a href="https://www.luogu.org/problemnew/show/P2782" target="_blank" rel="noopener">Link</a></p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>$O(n^2)$ 的做法：先把南岸或者北岸排序，然后找另一边的最长不下降子序列。但是过不了这题。</p>
-<p>$O(nlog_{n})$ 的做法：优化找最长不下降子序列的过程，使用 $upper$ _ $bound$ 函数找到第一个比当前大的数，替换它。</p>
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>一条河，南北岸各有 $n$ 座城市，每座城市有一个坐标。北岸的每座城市在南岸有一个“友好城市”，且不同城市的友好城市不同。如果在每对友好城市之间连边，在这些边互不相交的情况下使边数最多。</p>
+<p>数据范围：$n&lt;=2e5, x_i&lt;=1e6$</p>
 <a id="more"></a>
 
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>$O(n^2)$ 的做法：先把南岸或者北岸排序，然后找另一边的最长不下降子序列。但是过不了这题。</p>
+<p>$O(nlog_{n})$ 的做法：优化找最长不下降子序列的过程，使用 $upper$ _ $bound$ 函数找到第一个比当前大的数，替换它。</p>
 <h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">300005</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">city</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> s, n;</span><br><span class="line">&#125; a[N];</span><br><span class="line"><span class="keyword">int</span> n, len = <span class="number">0</span>, d[N];</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(city a, city b)</span> </span>&#123; <span class="keyword">return</span> a.n &lt; b.n; &#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;a[i].s, &amp;a[i].n);</span><br><span class="line">    sort(a + <span class="number">1</span>, a + n + <span class="number">1</span>, cmp);</span><br><span class="line">    d[++len] = a[<span class="number">1</span>].s; <span class="comment">//初始化</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> id = upper_bound(d + <span class="number">1</span>, d + len + <span class="number">1</span>, a[i].s) - d;</span><br><span class="line">        d[id] = a[i].s;</span><br><span class="line">        <span class="comment">//当前北岸编号较大，南岸编号较小，一定比刚才优</span></span><br><span class="line">        <span class="keyword">if</span>(id &gt; len) len++; <span class="comment">//如果新开了一个位置</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>, len);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
@@ -543,7 +544,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -599,7 +600,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">1.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">2.</span> <span class="nav-text">Code</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li></ol></div>
             
 
           </div>
