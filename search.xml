@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[洛谷 P2279 [HNOI2003]消防局的设立 题解]]></title>
+    <url>%2F2019%2F08%2F15%2F%E6%B4%9B%E8%B0%B7%20P2279%20%5BHNOI2003%5D%E6%B6%88%E9%98%B2%E5%B1%80%E7%9A%84%E8%AE%BE%E7%AB%8B%20%E9%A2%98%E8%A7%A3%2F</url>
+    <content type="text"><![CDATA[Description给定一棵 $n$ 个节点的树，定义树上两个节点 $a$、$b$ 的距离为从 $a$ 走到 $b$ 需要经过的边数。在任意一个节点建立消防站，可以覆盖到与其距离不超过 $2$ 的所有节点。求覆盖到树上每个节点最少需要的消防站个数。 数据范围：$n&lt;=1000$ Solution树形dpCode 1树形dp的做法先咕着，以后再补qwq 贪心每次选择一个深度最深的节点，想要覆盖这个节点，就需要在它的 兄弟/父亲/爷爷 中建立一个消防站。画图可以发现在其爷爷节点建立消防站可以覆盖到所有其他节点。 对所有节点进行排序，顺序遍历，取出 没有被覆盖过 的节点，在其爷爷节点建立一个消防站。 Code 212345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;cstring&gt;#include &lt;algorithm&gt;using namespace std;const int N = 2000;struct edge&#123; int nxt, to;&#125; e[N];int n, a, cnt = 0, max_d = 0, ans = 0;int vis[N], d[N], head[N], f[N], vis2[N], b[N];inline int read()&#123; char c = getchar(); int x = 0, f = 1; while(c &lt; '0' || c &gt; '9') &#123; if(c == '-') f = -1; c = getchar(); &#125; while(c &gt;= '0' &amp;&amp; c &lt;= '9') &#123; x = x * 10 + c - 48; c = getchar(); &#125; return x * f;&#125;void add(int x, int y)&#123; e[++cnt] = (edge) &#123; head[x], y &#125;; head[x] = cnt;&#125;void dfs(int x, int fa)&#123; f[x] = fa; d[x] = d[fa] + 1; for(int i = head[x]; i; i = e[i].nxt) &#123; int v = e[i].to; if(v != fa) dfs(v, x); &#125;&#125;void dfs2(int x, int tot)&#123; if(tot &gt; 2) return ; vis[x] = vis2[x] = 1; for(int i = head[x]; i; i = e[i].nxt) &#123; int v = e[i].to; if(!vis2[v]) dfs2(v, tot + 1); &#125;&#125;bool cmp(int a, int b) &#123; return d[a] &gt; d[b]; &#125;void solve()&#123; memset(vis, 0, sizeof(vis)); dfs(1, 0); sort(b + 1, b + n + 1, cmp); for(int i = 1; i &lt;= n; i++) &#123; if(vis[b[i]] == 1) continue; memset(vis2, 0, sizeof(vis2)); ans++; dfs2(f[f[b[i]]], 0); &#125;&#125;int main()&#123; n = read(); for(int i = 1; i &lt; n; i++) &#123; a = read(); b[i] = i; add(a, i + 1); add(i + 1, a); &#125; b[n] = n; solve(); printf("%d", ans); return 0;&#125;]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>dp</tag>
+        <tag>树形dp</tag>
+        <tag>贪心</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[洛谷 P1026 统计单词个数 题解]]></title>
+    <url>%2F2019%2F08%2F15%2F%E6%B4%9B%E8%B0%B7%20P1026%20%E7%BB%9F%E8%AE%A1%E5%8D%95%E8%AF%8D%E4%B8%AA%E6%95%B0%20%E9%A2%98%E8%A7%A3%2F</url>
+    <content type="text"><![CDATA[Description给出一个由小写字母组成的字符串（$p$ 行，每行 $20$ 个字母)，以及 $s$ 个单词。将此字母串分成 $k$ 份，使每份中包含的单词数之和最大（单词可以重叠，但其首字母不能重复使用）。 数据范围：$p&lt;=10, 1&lt;k&lt;=40, 1&lt;=s&lt;=6$ Solution设 $f[i][j]$ 为前 $i$ 个字符分成 $j$ 段的最大单词数；$cnt[i][j]$ 表示在 不考虑断开 的前提下 $[i,j]$ 区间的单词数。 首先预处理处 $cnt$ 数组。 转移方程：$f[i][j]=max(f[k][j-1]+cnt[k+1][i])$ （$k$ 为枚举上次断开的位置） Code12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;cstring&gt;#include &lt;algorithm&gt;using namespace std;string str, s = "", w[10];int p, q, n, f[300][50], cnt[300][300];bool get(int x, int y)&#123; for(int i = 0; i &lt; w[y].size(); i++) if(s[i + x] != w[y][i]) return false; return true;&#125;void solve()&#123; for(int i = 0; i &lt; s.size(); i++) for(int j = i; j &lt; s.size(); j++) for(int k = i; k &lt;= j; k++) for(int h = 1; h &lt;= n; h++) if(k + w[h].size() - 1 &lt;= j &amp;&amp; get(k, h)) &#123; cnt[i][j]++; break; &#125;&#125;int main()&#123; scanf("%d%d", &amp;p, &amp;q); for(int i = 1; i &lt;= p; i++) &#123; cin &gt;&gt; str; s += str; &#125; scanf("%d", &amp;n); for(int i = 1; i &lt;= n; i++) cin &gt;&gt; w[i]; memset(cnt, 0, sizeof(cnt)); solve(); memset(f, 0, sizeof(f)); for(int i = 0; i &lt; s.size(); i++) for(int j = 1; j &lt;= min(i + 1, q); j++) for(int k = j - 2; k &lt; i; k++) f[i][j] = max(f[i][j], f[k][j - 1] + cnt[k + 1][i]); printf("%d", f[s.size() - 1][q]); return 0;&#125;]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>dp</tag>
+        <tag>字符串</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[洛谷 P1220 关路灯 题解]]></title>
+    <url>%2F2019%2F08%2F15%2F%E6%B4%9B%E8%B0%B7%20P1220%20%E5%85%B3%E8%B7%AF%E7%81%AF%20%E9%A2%98%E8%A7%A3%2F</url>
+    <content type="text"><![CDATA[Description有 $n$ 盏路灯，每盏路灯有坐标（单位 $m$）和功率（单位 $J$）。从第 $c$ 盏路灯开始，可以向左或向右关闭路灯。速度是 $1m/s$。求所有路灯的最少耗电。输入保证坐标单调递增。 数据范围：$1&lt;=n&lt;=50$ Solution设 $f[i][j][0/1]$ 为已经关闭区间 $[i,j]$ 所有灯，此时站在 左端点 $/$ 右端点 的最小耗电。 设 $d(i,j)$ 为第 $i$ 盏路灯和第 $j$ 盏路灯之间的距离，$w(i,j)$ 为 除了 $[i,j]$ 区间所有灯每秒钟的耗电总和。转移方程： $f[i][j][0]=max(f[i+1][j][0]+d(i,i+1)w(i+1,j),f[i+1][j][1]+d(i,j)w(i+1,j))$$f[i][j][1]=max(f[i][j-1][0]+d(i,j)w(i,j-1),f[i][j-1][1]+d(j-1,j)w(j,j-1))$ 使用前缀和维护耗电之和。 Code1234567891011121314151617181920212223242526272829303132333435363738394041#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;cstring&gt;#include &lt;algorithm&gt;using namespace std;const int N = 60;struct light&#123; int pos, w;&#125; a[N];int n, c, sum[N], f[N][N][2];int main()&#123; scanf("%d%d", &amp;n, &amp;c); sum[0] = 0; for(int i = 1; i &lt;= n; i++) &#123; scanf("%d%d", &amp;a[i].pos, &amp;a[i].w); sum[i] = sum[i - 1] + a[i].w; &#125; memset(f, 0x3f, sizeof(f)); f[c][c][0] = f[c][c][1] = 0; for(int i = 1; i &lt;= n; i++) &#123; for(int l = 1; l + i &lt;= n; l++) &#123; int r = l + i; int d1 = sum[n] - sum[r] + sum[l]; int d2 = sum[n] - sum[r - 1] + sum[l - 1]; if(l &gt; c || r &lt; c) continue; f[l][r][0] = min(f[l][r][0], f[l + 1][r][0] + (a[l + 1].pos - a[l].pos) * d1); f[l][r][0] = min(f[l][r][0], f[l + 1][r][1] + (a[r].pos - a[l].pos) * d1); f[l][r][1] = min(f[l][r][1], f[l][r - 1][1] + (a[r].pos - a[r - 1].pos) * d2); f[l][r][1] = min(f[l][r][1], f[l][r - 1][0] + (a[r].pos - a[l].pos) * d2); &#125; &#125; printf("%d", min(f[1][n][0], f[1][n][1])); return 0;&#125;]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>dp</tag>
+        <tag>区间dp</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[bzoj 1001 [BeiJing2006]狼抓兔子 题解]]></title>
     <url>%2F2019%2F07%2F26%2Fbzoj%201001%20%5BBeiJing2006%5D%E7%8B%BC%E6%8A%93%E5%85%94%E5%AD%90%20%E9%A2%98%E8%A7%A3%2F</url>
     <content type="text"><![CDATA[Description给定一 $n*m$ 的网格图。每条边有一个流量，兔子从左上角 $(1,1)$ 跑到右下角 $(n,m)$。流量为 $k$ 的边需要 $k$ 匹狼才能堵住。 求把兔子一网打尽所需的最少的狼。 如图： 数据范围：$n,m&lt;=1000$ Solution首先想到的是最大流 $=$ 最小割，可以跑一遍网络流。$TLE$。还有一个定理：平面图的最大流 $=$ 其对偶图的最短路。建对偶图，然后跑 $dijkstra+$ 堆优化。 平面图一边只在顶点处相交的图（其边不存在交叉） 对偶图定义对于每一个平面图， 都有与其相对应的对偶图。假设上面的例图是 $G$，与其对应的对偶图为 $G’$,那么对于 $G’$ 上面的每一个点， 对应的是 $G$ 里面的每一个面。 构建方式如图。对于每条边，用一条 垂直与 它的边连接对应的两个点（面） Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;cstring&gt;#include &lt;queue&gt;#define M (n - 1) * (m - 1) * 2 + 1using namespace std;const int N = 1000006;struct edge&#123; int nxt, to,w;&#125; e[N * 6 + 106];struct node&#123; int id, dis; friend bool operator &lt; (node x, node y) &#123; return x.dis &gt; y.dis; &#125;&#125;;priority_queue &lt; node &gt; q;int n, m, a, cnt = 0, dis[N * 2 + 106], vis[N * 2 + 106], head[N * 2 + 106];inline int read()&#123; char c = getchar(); int x = 0, f = 1; while(c &lt; '0' || c &gt; '9') &#123; if(c == '-') f = -1; c = getchar(); &#125; while(c &gt;= '0' &amp;&amp; c &lt;= '9') &#123; x = x * 10 + c - 48; c = getchar(); &#125; return x * f;&#125;void add(int x, int y, int w)&#123; e[++cnt] = (edge) &#123; head[x], y, w &#125;; head[x] = cnt; e[++cnt] = (edge) &#123; head[y], x, w &#125;; head[y] = cnt;&#125;void dijkstra()&#123; memset(dis, 0x3f, sizeof(dis)); memset(vis, 0, sizeof(vis)); q.push((node) &#123; 0, 0 &#125;); dis[0] = 0; while(!q.empty()) &#123; int a = q.top().id; q.pop(); if(vis[a]) continue; vis[a] = 1; for(int i = head[a]; i; i = e[i].nxt) &#123; int v = e[i].to; if(dis[v] &gt; dis[a] + e[i].w) &#123; dis[v] = dis[a] + e[i].w; if(!vis[v]) q.push((node) &#123; v, dis[v] &#125;); &#125; &#125; &#125;&#125;int ID(int x, int y, int k)&#123; if(k == 1) return (x - 1) * (m - 1) * 2 + y; return (x - 1) * (m - 1) * 2 + y + m - 1;&#125;int main()&#123; n = read(), m = read(); memset(head, 0, sizeof(head)); if(n == 1 || m == 1) &#123; int f = 0x3f3f3f3f; for(int i = 1; i &lt; max(n, m); i++) &#123; a = read(); f = min(f, a); &#125; printf("%d", f); return 0; &#125; for(int i = 1; i &lt;= n; i++) for(int j = 1; j &lt; m; j++) &#123; a = read(); if(i == 1) add(ID(i, j, 1), 0, a); else if(i == n) add(ID(i - 1, j, 2), M, a); else add(ID(i, j, 1), ID(i - 1, j, 2), a); &#125; for(int i = 1; i &lt; n; i++) for(int j = 1; j &lt;= m; j++) &#123; a = read(); if(j == 1) add(ID(i, j, 2), M, a); else if(j == m) add(ID(i, j - 1, 1), 0, a); else add(ID(i, j, 2), ID(i, j - 1, 1), a); &#125; for(int i = 1; i &lt; n; i++) for(int j = 1; j &lt; m; j++) &#123; a = read(); add(ID(i, j, 1), ID(i, j, 2), a); &#125; dijkstra(); printf("%d", dis[M]); return 0;&#125;]]></content>
@@ -18,8 +55,10 @@
     <title><![CDATA[洛谷 P2782 友好城市 题解]]></title>
     <url>%2F2019%2F07%2F24%2F%E6%B4%9B%E8%B0%B7%20P2782%20%E5%8F%8B%E5%A5%BD%E5%9F%8E%E5%B8%82%20%E9%A2%98%E8%A7%A3%2F</url>
     <content type="text"><![CDATA[Description一条河，南北岸各有 $n$ 座城市，每座城市有一个坐标。北岸的每座城市在南岸有一个“友好城市”，且不同城市的友好城市不同。如果在每对友好城市之间连边，在这些边互不相交的情况下使边数最多。 数据范围：$n&lt;=2e5, x_i&lt;=1e6$ Solution$O(n^2)$ 的做法：先把南岸或者北岸排序，然后找另一边的最长不下降子序列。但是过不了这题。 $O(nlog_{n})$ 的做法：优化找最长不下降子序列的过程，使用 $upper$ _ $bound$ 函数找到第一个比当前大的数，替换它。 Code1234567891011121314151617181920212223242526272829#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;cstring&gt;#include &lt;algorithm&gt;using namespace std;const int N = 300005;struct city&#123; int s, n;&#125; a[N];int n, len = 0, d[N];bool cmp(city a, city b) &#123; return a.n &lt; b.n; &#125;int main()&#123; scanf("%d", &amp;n); for(int i = 1; i &lt;= n; i++) scanf("%d%d", &amp;a[i].s, &amp;a[i].n); sort(a + 1, a + n + 1, cmp); d[++len] = a[1].s; //初始化 for(int i = 2; i &lt;= n; i++) &#123; int id = upper_bound(d + 1, d + len + 1, a[i].s) - d; d[id] = a[i].s; //当前北岸编号较大，南岸编号较小，一定比刚才优 if(id &gt; len) len++; //如果新开了一个位置 &#125; printf("%d", len); return 0;&#125;]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
       <tags>
-        <tag>题解</tag>
         <tag>dp</tag>
         <tag>排序</tag>
       </tags>
@@ -28,8 +67,10 @@
     <title><![CDATA[JoyOI 中中的背包 题解]]></title>
     <url>%2F2019%2F07%2F23%2FJoyOI%20%E4%B8%AD%E4%B8%AD%E7%9A%84%E8%83%8C%E5%8C%85%20%E9%A2%98%E8%A7%A3%2F</url>
     <content type="text"><![CDATA[Description背包的容积为 $m$，$n$ 个物品，每样东西都有自己的价值、体积和个数（个数 $=0$ 表示无限多个）。求最大价值。 数据范围：$1&lt;=n,m&lt;=5500$ Solution最暴力的做法是 $O(n^2m)$ 的，太慢了，怎么办？只要把每个物品都拆开，比如像 $z[i]=13$，我们把这个物品拆成 $1,2,4,6$，每个物品只能选 $1$ 次 具体的拆法是：先按照 $2$ 的次方来拆，直到当前$+2$的下一个次方数 $&gt;z[i]$ ，就按照 $z[i]−2$ 的当前次方数捆绑最后一堆物体 如上例，这 $4$ 个数可以凑出 $1–13$ 的所有数，所以跑一遍 $01$ 背包模板 为什么能凑出? 简单的证明：比如 $z[i]=31$ ，拆出来是 $1,2,4,8,10$，转化成二进制就是： 123456 1 10 100 1000 10000100000 如果右对齐一下，可以看到任意一位都有且仅有一个 $1$。把要凑的数转化成二进制，每一位有 $1$ 的话就加上这一位有 $1$ 的数。 这种情况是 $z[i]$ 正好能被 $2$ 的次方数凑出。如果不能，比如 $37$ ，最后一堆捆绑的物品就是 $6$。当选择 $1–31$ 个物品时，就按照上面的凑法；当选择 $32–37$ 个物品时，就先选择 $6$ 这一堆，然后再按照上面的凑法。 $upd:$ 似乎没有特判个数 $=0$ （无限多个）的情况，不过不影响 $AC$ … Code12345678910111213141516171819202122232425262728293031323334353637383940#include &lt;iostream&gt;#include &lt;cstdio&gt;#define int long longusing namespace std;int n, m, cnt = 0, ans = 0, v[100000], w[100000], f[9001];signed main()&#123; scanf("%lld%lld", &amp;n, &amp;m); for(int i = 1; i &lt;= n; i++) &#123; int a, b, c, x = 1; scanf("%lld%lld%lld", &amp;a, &amp;b, &amp;c); while(x &lt;= c) &#123; cnt++; v[cnt] = a*x; w[cnt] = b*x; c -= x; x *= 2; &#125; if(c) &#123; cnt++; v[cnt] = a * c; w[cnt] = b * c; &#125; &#125; n = cnt; for(int i = 1; i &lt;= n; i++) &#123; for(int j = m; j &gt;= v[i]; j--) &#123; f[j] = max(f[j], f[j - v[i]] + w[i]); &#125; &#125; for(int i = 1; i &lt;= m; i++) ans = max(ans, f[i]); printf("%lld", ans); return 0;&#125;]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
       <tags>
-        <tag>题解</tag>
         <tag>dp</tag>
         <tag>背包</tag>
       </tags>
@@ -50,6 +91,9 @@
     <title><![CDATA[JoyOI 数字三角形2 题解]]></title>
     <url>%2F2019%2F07%2F23%2FJoyOI%20%E6%95%B0%E5%AD%97%E4%B8%89%E8%A7%92%E5%BD%A22%20%E9%A2%98%E8%A7%A3%2F</url>
     <content type="text"><![CDATA[Description给定数字三角形，要求最后答案 $mod$ $100$ 最大。 数据范围：$n&lt;=25$ Solution设 $bool$ $f[i][j][k]$ 为走到 $(i,j)$ 这个点 $mod$ $100$ 能不能得到 $k$。更新使用刷表法。 Code12345678910111213141516171819202122232425262728#include &lt;iostream&gt;#include &lt;cstring&gt;#include &lt;cstdio&gt;using namespace std;int n, f[100][100][150], a[50][50];int main()&#123; memset(f, 0, sizeof(f)); scanf("%d", &amp;n); for(int i = 1; i &lt;= n; i++) for(int j = 1; j &lt;= i; j++) scanf("%d", &amp;a[i][j]); f[1][1][a[1][1] % 100] = 1; for(int i = 1; i &lt;= n; i++) for(int j = 1; j &lt;= i; j++) for(int k = 0; k &lt; 100; k++) if(f[i][j][k]) &#123; f[i + 1][j][(k + a[i + 1][j]) % 100] = 1; f[i + 1][j + 1][(k + a[i + 1][j + 1]) % 100] = 1; &#125; int ans = -0x3f3f3f3f; for(int i = 1; i &lt;= n; i++) for(int k = 0; k &lt; 100; k++) if(f[n][i][k]) ans = max(ans, k); printf("%d", ans); return 0;&#125;]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
       <tags>
         <tag>dp</tag>
       </tags>
@@ -58,8 +102,10 @@
     <title><![CDATA[洛谷 P4302 [SCOI2003]字符串折叠 题解]]></title>
     <url>%2F2019%2F07%2F23%2F%E6%B4%9B%E8%B0%B7%20P4302%20%5BSCOI2003%5D%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8A%98%E5%8F%A0%20%E9%A2%98%E8%A7%A3%2F</url>
     <content type="text"><![CDATA[Description折叠的定义如下： $1.$ 一个字符串可以看成它自身的折叠。记作 $S=S$. $2.$ $X(S)$ 是 $X(X&gt;1)$ 个 $S$ 连接在一起的串的折叠。记作 $X(S)=SSSS…S$ ( $X$ 个 $S$ )。 如果 $A=A’$, $B=B’$，则 $AB=A’B’$ 例如，因为 $3(A)=AAA$, $2(B)=BB$，所以 $3(A)C2(B)=AAACBB$，而 $2(3(A)C)2(B)=AAACAAACBB$ 求给定字符串的最短折叠。 数据范围：$len&lt;=100$ Solution设 $f[i][j]$ 为表示区间 $[i,j]$ 折叠的最小长度。 $get(i,j,k,h)$ 表示区间 $[i,j]$ 和区间 $[k,h]$ 能否折叠。 如果能够折叠：$f[i][j]=min(f[i][j],f[i][k]+2+cal((j-i+1)/(k-i+1)))$ （其中 $cal(x)$ 返回的是 $x$ 的位数） 否则：$f[i][j]=min(f[i][j],f[i][k]+f[k+1][j])$ Code12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;cstring&gt;#include &lt;algorithm&gt;using namespace std;const int N = 300;string s;int f[N][N], n;bool get(int x1, int y1, int x2, int y2)&#123; if((y2 - x1 + 1) % (y1 - x1 + 1) != 0) return false; int len = y1 - x1 + 1; for(int i = x2; i &lt;= y2; i++) &#123; if(s[i] != s[i - len]) return false; &#125; return true;&#125;int cal(int k)&#123; int ans = 0; while(k) &#123; k /= 10; ans++; &#125; return ans;&#125;int main()&#123; cin &gt;&gt; s; n = s.size(); for(int i = 0; i &lt; n; i++) f[i][i] = 1; for(int i = 1; i &lt; n; i++) &#123; for(int l = 0; l + i &lt; n; l++) &#123; int r = l + i; f[l][r] = r - l + 1; for(int k = l; k &lt; r; k++) &#123; if(!get(l, k, k + 1, r)) f[l][r] = min(f[l][r], f[l][k] + f[k + 1][r]); else f[l][r] = min(f[l][r], f[l][k] + 2 + cal((r - l + 1) / (k - l + 1))); &#125; &#125; &#125; printf("%d", f[0][n - 1]); return 0;&#125;]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
       <tags>
-        <tag>题解</tag>
         <tag>dp</tag>
         <tag>区间dp</tag>
       </tags>

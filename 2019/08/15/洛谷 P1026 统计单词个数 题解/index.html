@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="dp,字符串,">
 
 
 
@@ -81,13 +81,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="lxy&#39;s blog">
-<meta property="og:url" content="https:LotusLeaves.github.io/tags/离散化/index.html">
+<meta name="description" content="Description给出一个由小写字母组成的字符串（$p$ 行，每行 $20$ 个字母)，以及 $s$ 个单词。将此字母串分成 $k$ 份，使每份中包含的单词数之和最大（单词可以重叠，但其首字母不能重复使用）。 数据范围：$p&amp;lt;=10, 1&amp;lt;k&amp;lt;=40, 1&amp;lt;=s&amp;lt;=6$">
+<meta name="keywords" content="dp,字符串">
+<meta property="og:type" content="article">
+<meta property="og:title" content="洛谷 P1026 统计单词个数 题解">
+<meta property="og:url" content="https:LotusLeaves.github.io/2019/08/15/洛谷 P1026 统计单词个数 题解/index.html">
 <meta property="og:site_name" content="lxy&#39;s blog">
+<meta property="og:description" content="Description给出一个由小写字母组成的字符串（$p$ 行，每行 $20$ 个字母)，以及 $s$ 个单词。将此字母串分成 $k$ 份，使每份中包含的单词数之和最大（单词可以重叠，但其首字母不能重复使用）。 数据范围：$p&amp;lt;=10, 1&amp;lt;k&amp;lt;=40, 1&amp;lt;=s&amp;lt;=6$">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-08-15T13:24:40.530Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="lxy&#39;s blog">
+<meta name="twitter:title" content="洛谷 P1026 统计单词个数 题解">
+<meta name="twitter:description" content="Description给出一个由小写字母组成的字符串（$p$ 行，每行 $20$ 个字母)，以及 $s$ 个单词。将此字母串分成 $k$ 份，使每份中包含的单词数之和最大（单词可以重叠，但其首字母不能重复使用）。 数据范围：$p&amp;lt;=10, 1&amp;lt;k&amp;lt;=40, 1&amp;lt;=s&amp;lt;=6$">
 
 
 
@@ -117,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https:LotusLeaves.github.io/tags/离散化/">
+  <link rel="canonical" href="https:LotusLeaves.github.io/2019/08/15/洛谷 P1026 统计单词个数 题解/">
 
 
 
 
 
-  <title>标签: 离散化 | lxy's blog</title>
+  <title>洛谷 P1026 统计单词个数 题解 | lxy's blog</title>
   
 
 
@@ -142,7 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -278,78 +283,205 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>离散化<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https:LotusLeaves.github.io/2019/08/15/洛谷 P1026 统计单词个数 题解/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lxy">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lxy's blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/07/23/洛谷 P4766 [CERC2014]Outer space invaders 题解/" itemprop="url">
-              
-                <span itemprop="name">洛谷 P4766 [CERC2014]Outer space invaders 题解</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">洛谷 P1026 统计单词个数 题解</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-07-23T09:06:00+08:00" content="2019-07-23">
-          07-23
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-15T21:04:50+08:00">
+                2019-08-15
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/题解/" itemprop="url" rel="index">
+                    <span itemprop="name">题解</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/15/洛谷 P1026 统计单词个数 题解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/15/洛谷 P1026 统计单词个数 题解/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/08/15/洛谷 P1026 统计单词个数 题解/" class="leancloud_visitors" data-flag-title="洛谷 P1026 统计单词个数 题解">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃</span>
+			 </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>给出一个由小写字母组成的字符串（$p$ 行，每行 $20$ 个字母)，以及 $s$ 个单词。将此字母串分成 $k$ 份，使每份中包含的单词数之和最大（单词可以重叠，但其首字母不能重复使用）。</p>
+<p>数据范围：$p&lt;=10, 1&lt;k&lt;=40, 1&lt;=s&lt;=6$</p>
+<a id="more"></a>
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/07/23/离散化/" itemprop="url">
-              
-                <span itemprop="name">离散化</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-07-23T07:59:02+08:00" content="2019-07-23">
-          07-23
-        </time>
-      </div>
-
-    </header>
-  </article>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>设 $f[i][j]$ 为前 $i$ 个字符分成 $j$ 段的最大单词数；$cnt[i][j]$ 表示在 <strong>不考虑断开</strong> 的前提下 $[i,j]$ 区间的单词数。</p>
+<p>首先预处理处 $cnt$ 数组。</p>
+<p>转移方程：$f[i][j]=max(f[k][j-1]+cnt[k+1][i])$ （$k$ 为枚举上次断开的位置）</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span> str, s = <span class="string">""</span>, w[<span class="number">10</span>];</span><br><span class="line"><span class="keyword">int</span> p, q, n, f[<span class="number">300</span>][<span class="number">50</span>], cnt[<span class="number">300</span>][<span class="number">300</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; w[y].size(); i++)</span><br><span class="line">        <span class="keyword">if</span>(s[i + x] != w[y][i]) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.size(); i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = i; j &lt; s.size(); j++)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k = i; k &lt;= j; k++)</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> h = <span class="number">1</span>; h &lt;= n; h++)</span><br><span class="line">                    <span class="keyword">if</span>(k + w[h].size() - <span class="number">1</span> &lt;= j &amp;&amp; get(k, h))</span><br><span class="line">                    &#123;</span><br><span class="line">                        cnt[i][j]++;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;p, &amp;q);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= p; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; str;</span><br><span class="line">        s += str;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) <span class="built_in">cin</span> &gt;&gt; w[i];</span><br><span class="line">    <span class="built_in">memset</span>(cnt, <span class="number">0</span>, <span class="keyword">sizeof</span>(cnt));</span><br><span class="line">    solve();</span><br><span class="line">    <span class="built_in">memset</span>(f, <span class="number">0</span>, <span class="keyword">sizeof</span>(f));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.size(); i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= min(i + <span class="number">1</span>, q); j++)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k = j - <span class="number">2</span>; k &lt; i; k++)</span><br><span class="line">                f[i][j] = max(f[i][j], f[k][j - <span class="number">1</span>] + cnt[k + <span class="number">1</span>][i]);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>, f[s.size() - <span class="number">1</span>][q]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/dp/" rel="tag"># dp</a>
+          
+            <a href="/tags/字符串/" rel="tag"># 字符串</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/15/洛谷 P1220 关路灯 题解/" rel="next" title="洛谷 P1220 关路灯 题解">
+                <i class="fa fa-chevron-left"></i> 洛谷 P1220 关路灯 题解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/15/洛谷 P2279 [HNOI2003]消防局的设立 题解/" rel="prev" title="洛谷 P2279 [HNOI2003]消防局的设立 题解">
+                洛谷 P2279 [HNOI2003]消防局的设立 题解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -357,6 +489,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -377,8 +516,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -463,6 +611,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -610,6 +774,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
